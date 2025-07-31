@@ -1,7 +1,12 @@
 ##### 문제 1 #####
+CREATE TABLE IF NOT EXISTS player_delete_logs (
+	log_id INT AUTO_INCREMENT PRIMARY KEY,
+    player_name VARCHAR(50),
+    deleted_time datetime
+);
 -- 기존 트리거 삭제
 drop trigger if exists after_player_delete;
-
+drop table player_insert
 -- 트리거 생성
 delimiter $$
 create trigger after_player_delete
@@ -15,6 +20,14 @@ end $$
 delimiter ;
 
 ##### 문제 2 #####
+-- 로그 테이블 생성 (문제 2)
+CREATE TABLE IF NOT EXISTS player_position_logs (
+	log_id INT AUTO_INCREMENT PRIMARY KEY,
+    player_name VARCHAR(50),
+    old_position VARCHAR(20),
+    new_position VARCHAR(20),
+    changed_time datetime
+);
 -- 기존 트리거 삭제
 drop trigger if exists after_player_position_update;
 
